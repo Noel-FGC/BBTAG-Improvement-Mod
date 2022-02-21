@@ -14,7 +14,7 @@ BBTAG Improvement Mod is NOT intended to unlock unreleased / unpurchased content
 BBTAG Improvement Mod should only be used on the official version that you legally purchased and own.
 
 Use BBTAG Improvement Mod at your own risk. 
-I, KoviDomi, am not responsible for what happens while using BBTAG Improvement Mod. You take full reponsibility for any outcome that happens to you while using this application.
+I, GrimFlash, am not responsible for what happens while using BBTAG Improvement Mod. You take full reponsibility for any outcome that happens to you while using this application.
 ```
 
 ## Compiling and usage
@@ -54,15 +54,8 @@ Implements imported functions overriding using the Detours library
 - **Hooks/hooks_steamApiWrapper** <br>
 Implements Steam API overriding
 
-
-## Support
-If you feel like throwing some dollars my way feel free to, it enables me spending more time working on the mod.
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C8EDR78DJ8PU2)
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C8EDR78DJ8PU2)
-
 ## Thanks to the people who have helped the mod along the way:
+* KoviDomi
 * Neptune
 * Rouzel
 * Labryz
