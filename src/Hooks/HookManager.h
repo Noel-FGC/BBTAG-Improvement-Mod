@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <Windows.h>
+#include <string>
 
 #define MAX_LENGTH 32
 
