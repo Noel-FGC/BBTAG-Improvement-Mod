@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <Windows.h>
+#include <string>
 
 class D3D9Utils
 {
