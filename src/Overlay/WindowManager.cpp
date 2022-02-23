@@ -9,7 +9,6 @@
 #include "Core/logger.h"
 #include "Core/Settings.h"
 #include "Core/utils.h"
-#include "Web/donators_fetch.h"
 #include "Web/update_check.h"
 #include <imgui.h>
 #include <imgui_impl_dx9.h>
@@ -121,7 +120,6 @@ bool WindowManager::Initialize(void *hwnd, IDirect3DDevice9 *device)
 	srand(time(NULL));
 
 	StartAsyncUpdateCheck();
-	StartAsyncDonatorsFetch();
 
 	m_pLogger->Log("[system] Finished initialization\n");
 	m_pLogger->LogSeparator();
