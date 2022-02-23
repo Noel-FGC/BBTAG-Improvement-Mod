@@ -9,7 +9,6 @@
 #include "Core/interfaces.h"
 #include "Game/gamestates.h"
 #include "Overlay/imgui_utils.h"
-#include "Web/donators_fetch.h"
 
 #include <sstream>
 
@@ -64,8 +63,6 @@ void MainWindow::Draw()
 	ImGui::Text("Toggle Custom HUD with %s", Settings::settingsIni.togglecustomHUDbutton.c_str());
 	ImGui::Separator();
 
-	DrawDonatorsButton();
-
 	ImGui::Text("");
 
 	DrawCustomHudSection();
@@ -102,49 +99,6 @@ void MainWindow::Draw()
 	}
 
 	DrawLinkButtons();
-}
-
-void MainWindow::DrawDonatorsButton()
-{
-	if (GetDonatorNames().empty())
-	{
-		return;
-	}
-
-	const float SPEED = 2.0f;
-	int passedTime = (int)(ImGui::GetTime() / SPEED);
-	static int prevPassedTime = 0;
-	int donatorSize = GetDonatorNames().size() - 1;
-	static int index = 0;
-
-	if (passedTime > prevPassedTime)
-	{
-		prevPassedTime = passedTime;
-		index++;
-		if (index > donatorSize)
-			index = 0;
-	}
-
-	std::string donatorName = "";
-
-	if (index == 0)
-		donatorName += "Top Donator: ";
-
-	donatorName += GetDonatorNames()[index];
-
-	char buf[128];
-	sprintf(buf, "%s", donatorName.c_str());
-	if (ImGui::Button(buf, ImVec2(-1.0f, 24)))
-	{
-		m_pWindowContainer->GetWindow(WindowType_Donators)->ToggleOpen();
-	}
-
-	if (ImGui::IsItemHovered())
-	{
-		ImGui::BeginTooltip();
-		ImGui::TextUnformatted("Donators");
-		ImGui::EndTooltip();
-	}
 }
 
 void MainWindow::DrawCustomHudSection() const
@@ -313,9 +267,6 @@ void MainWindow::DrawLinkButtons() const
 
 	ImGui::SameLine();
 	ButtonUrl("GitHub", MOD_LINK_GITHUB, BTN_SIZE);
-
-	ImGui::SameLine();
-	ButtonUrl("Donate", MOD_LINK_DONATE, BTN_SIZE);
 }
 
 void MainWindow::DrawLoadedSettingsValues() const
