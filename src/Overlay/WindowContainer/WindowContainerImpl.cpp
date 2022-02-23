@@ -2,7 +2,6 @@
 
 #include "Overlay/Window/CustomHud/CustomHudWindow.h"
 #include "Overlay/Window/DebugWindow.h"
-#include "Overlay/Window/DonatorsWindow.h"
 #include "Overlay/Window/HitboxOverlay.h"
 #include "Overlay/Window/LogWindow.h"
 #include "Overlay/Window/MainWindow.h"
@@ -25,10 +24,6 @@ void WindowContainerImpl::FillWindowContainer()
 
 	AddWindow(WindowType_Debug,
 		new DebugWindow("DEBUG", true));
-
-	AddWindow(WindowType_Donators,
-		new DonatorsWindow("##DONATORS", false,
-			ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse));
 
 	AddWindow(WindowType_UpdateNotifier,
 		new UpdateNotifierWindow("Update available", true,
