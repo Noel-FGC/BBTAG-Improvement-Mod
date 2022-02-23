@@ -19,7 +19,6 @@ protected:
 	void BeforeDraw() override;
 	void Draw() override;
 private:
-	void DrawDonatorsButton();
 	void DrawLinkButtons() const;
 	void DrawLoadedSettingsValues() const;
 	void DrawCustomHudSection() const;
