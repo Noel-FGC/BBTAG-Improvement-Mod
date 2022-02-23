@@ -128,9 +128,6 @@
     <ClCompile Include="src\Hooks\hooks_detours.cpp">
       <Filter>src\Hooks</Filter>
     </ClCompile>
-    <ClCompile Include="src\Web\donators_fetch.cpp">
-      <Filter>src\Web</Filter>
-    </ClCompile>
     <ClCompile Include="src\Web\update_check.cpp">
       <Filter>src\Web</Filter>
     </ClCompile>
@@ -160,7 +157,6 @@
     </ClCompile>
     <ClCompile Include="src\Game\JonbReader.cpp" />
     <ClCompile Include="src\Overlay\Window\DebugWindow.cpp" />
-    <ClCompile Include="src\Overlay\Window\DonatorsWindow.cpp" />
     <ClCompile Include="src\Overlay\Window\LogWindow.cpp" />
     <ClCompile Include="src\Overlay\Window\MainWindow.cpp" />
     <ClCompile Include="src\Overlay\Window\PaletteEditorWindow.cpp">
@@ -288,9 +284,6 @@
     <ClInclude Include="src\Hooks\hooks_detours.h">
       <Filter>src\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="src\Web\donators_fetch.h">
-      <Filter>src\Web</Filter>
-    </ClInclude>
     <ClInclude Include="src\Web\update_check.h">
       <Filter>src\Web</Filter>
     </ClInclude>
@@ -319,7 +312,6 @@
       <Filter>src\WindowManager</Filter>
     </ClInclude>
     <ClInclude Include="src\Overlay\Window\DebugWindow.h" />
-    <ClInclude Include="src\Overlay\Window\DonatorsWindow.h" />
     <ClInclude Include="src\Overlay\Window\LogWindow.h" />
     <ClInclude Include="src\Overlay\Window\MainWindow.h" />
     <ClInclude Include="src\Overlay\Window\PaletteEditorWindow.h">
@@ -346,10 +338,5 @@
     <ClInclude Include="src\Game\MatchState.h" />
     <ClInclude Include="src\Overlay\Window\HitboxOverlay.h" />
     <ClInclude Include="src\Overlay\imgui_utils.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="resource\donators.txt">
-      <Filter>resource</Filter>
-    </Text>
   </ItemGroup>
 </Project>

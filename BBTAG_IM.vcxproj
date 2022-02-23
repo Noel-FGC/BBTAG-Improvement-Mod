@@ -15,20 +15,20 @@
     <ProjectGuid>{2CD295F9-FB73-47B9-A937-E44865E7C386}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>BBTAG_IM</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>false</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -154,7 +154,6 @@
     <ClCompile Include="src\Overlay\Window\CustomHud\MetersWindow.cpp" />
     <ClCompile Include="src\Overlay\Window\CustomHud\TimerWindow.cpp" />
     <ClCompile Include="src\Overlay\Window\DebugWindow.cpp" />
-    <ClCompile Include="src\Overlay\Window\DonatorsWindow.cpp" />
     <ClCompile Include="src\Overlay\Window\HitboxOverlay.cpp" />
     <ClCompile Include="src\Overlay\Window\LogWindow.cpp" />
     <ClCompile Include="src\Overlay\Window\MainWindow.cpp" />
@@ -170,7 +169,6 @@
     <ClCompile Include="src\SteamApiWrapper\SteamUserStatsWrapper.cpp" />
     <ClCompile Include="src\SteamApiWrapper\SteamUserWrapper.cpp" />
     <ClCompile Include="src\SteamApiWrapper\SteamUtilsWrapper.cpp" />
-    <ClCompile Include="src\Web\donators_fetch.cpp" />
     <ClCompile Include="src\Web\palette_download.cpp" />
     <ClCompile Include="src\Web\update_check.cpp" />
     <ClCompile Include="src\Web\url_downloader.cpp" />
@@ -225,7 +223,6 @@
     <ClInclude Include="src\Overlay\Window\CustomHud\TimerWindow.h" />
     <ClInclude Include="src\Overlay\Window\CustomHud\CustomHudWindow.h" />
     <ClInclude Include="src\Overlay\Window\DebugWindow.h" />
-    <ClInclude Include="src\Overlay\Window\DonatorsWindow.h" />
     <ClInclude Include="src\Overlay\Window\HitboxOverlay.h" />
     <ClInclude Include="src\Overlay\Window\LogWindow.h" />
     <ClInclude Include="src\Overlay\Window\MainWindow.h" />
@@ -242,16 +239,12 @@
     <ClInclude Include="src\SteamApiWrapper\SteamUserStatsWrapper.h" />
     <ClInclude Include="src\SteamApiWrapper\SteamUserWrapper.h" />
     <ClInclude Include="src\SteamApiWrapper\SteamUtilsWrapper.h" />
-    <ClInclude Include="src\Web\donators_fetch.h" />
     <ClInclude Include="src\Web\palette_download.h" />
     <ClInclude Include="src\Web\update_check.h" />
     <ClInclude Include="src\Web\url_downloader.h" />
     <ClInclude Include="src\Overlay\fonts.h" />
     <ClInclude Include="src\Overlay\Window\PaletteEditorWindow.h" />
     <ClInclude Include="src\Overlay\WindowManager.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="resource\donators.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
