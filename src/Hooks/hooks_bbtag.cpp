@@ -122,22 +122,6 @@ void __declspec(naked)GetGameStateAndModeEntranceScreen()
 	}
 }
 
-DWORD CpuUsageFixJmpBackAddr = 0;
-void __declspec(naked)CpuUsageFix()
-{
-	//Pretty ghetto solution, but for potato comps it's still better than overheating
-	__asm pushad
-	Sleep(1);
-	__asm popad
-	__asm
-	{
-		push esi
-		lea eax, [ebp-8h]
-		mov esi, ecx
-		jmp[CpuUsageFixJmpBackAddr]
-	}
-}
-
 DWORD GetIsHUDHiddenJmpBackAddr = 0;
 void __declspec(naked)GetIsHUDHidden()
 {
@@ -145,9 +129,9 @@ void __declspec(naked)GetIsHUDHidden()
 
 	__asm
 	{
-		or dword ptr[eax + 3E906Ch], 4
+		or dword ptr[eax + 3E9C78h], 4
 		push eax
-		add eax, 3E906Ch
+		add eax, 3E9C78h
 		mov g_gameVals.pIsHUDHidden, eax
 		pop eax
 		jmp[GetIsHUDHiddenJmpBackAddr]
@@ -654,12 +638,6 @@ bool placeHooks_bbtag()
 
 	DenyKeyboardInputFromGameJmpBackAddr = HookManager::SetHook("DenyKeyboardInputFromGame", "\x8d\x46\x28\x50\xff\x15", 
 		"xxxxxx", 10, DenyKeyboardInputFromGame);
-		
-	if (Settings::settingsIni.cpuusagefix)
-	{
-		CpuUsageFixJmpBackAddr = HookManager::SetHook("CpuUsageFix", "\x56\x8d\x45\xf8\x8b\xf1\x50",
-			"xxxxxxx", 6, CpuUsageFix);
-	}
 
 	if (Settings::settingsIni.forcepromptbuttonlayout != FORCE_PROMPT_LAYOUT_OFF)
 	{
@@ -676,8 +654,8 @@ bool placeHooks_bbtag()
 	VictoryScreenJmpBackAddr = HookManager::SetHook("VictoryScreen", "\xc7\x80\x18\x01\x00\x00\x0c\x00\x00\x00\xe8",
 		"xxxxxxxxxxx", 10, VictoryScreen);
 
-	GetIsHUDHiddenJmpBackAddr = HookManager::SetHook("GetIsHUDHidden", "\x83\x88\x6c\x90\x3e\x00\x04\x8b\x06\xff\x50\x24", 
-		"xxxxxxxxxxxx", 7, GetIsHUDHidden);
+	GetIsHUDHiddenJmpBackAddr = HookManager::SetHook("GetIsHUDHidden", "\x83\x88\x78\x9C\x3E\x00\x00\x8B\x06\xFF\x50\x00\x5F\xB8\x00\x00\x00\x00\x5E\xC3\x8B\x06\x8B\xCE\xFF\x50\x00\x5F\xB8\x00\x00\x00\x00\x5E\xC3\xE8", 
+		"xxxxxx?xxxx?xx????xxxxxxxx?xx????xxx", 7, GetIsHUDHidden);
 
 	GetCharObjectsJmpBackAddr = HookManager::SetHook("GetCharObjects", "\xc7\x01\x00\x00\x00\x00\xb8\x00\x00\x00\x00\xc7\x41\x04\x00\x00\x00\x00", 
 		"xx????x????xxxxxxx", 6, GetCharObjects);
