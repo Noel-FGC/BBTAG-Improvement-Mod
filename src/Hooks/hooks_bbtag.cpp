@@ -122,6 +122,22 @@ void __declspec(naked)GetGameStateAndModeEntranceScreen()
 	}
 }
 
+DWORD CpuUsageFixJmpBackAddr = 0;
+void __declspec(naked)CpuUsageFix()
+{
+	//Pretty ghetto solution, but for potato comps it's still better than overheating
+	__asm pushad
+	Sleep(1);
+	__asm popad
+	__asm
+	{
+		push esi
+		lea eax, [ebp-8h]
+		mov esi, ecx
+		jmp[CpuUsageFixJmpBackAddr]
+	}
+}
+
 DWORD GetIsHUDHiddenJmpBackAddr = 0;
 void __declspec(naked)GetIsHUDHidden()
 {
@@ -638,6 +654,12 @@ bool placeHooks_bbtag()
 
 	DenyKeyboardInputFromGameJmpBackAddr = HookManager::SetHook("DenyKeyboardInputFromGame", "\x8d\x46\x28\x50\xff\x15", 
 		"xxxxxx", 10, DenyKeyboardInputFromGame);
+		
+	if (Settings::settingsIni.cpuusagefix)
+	{
+		CpuUsageFixJmpBackAddr = HookManager::SetHook("CpuUsageFix", "\x56\x8d\x45\xf8\x8b\xf1\x50",
+			"xxxxxxx", 6, CpuUsageFix);
+	}
 
 	if (Settings::settingsIni.forcepromptbuttonlayout != FORCE_PROMPT_LAYOUT_OFF)
 	{
