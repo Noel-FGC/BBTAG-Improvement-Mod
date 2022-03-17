@@ -1,3 +1,8 @@
+16-03-2022 -- version 1.10
+===============================
+- Updated for publictest branch
+- Vsync is now set to off by default. You can turn it on in the settings.ini file
+
 11-12-2019 -- version 1.09
 ===============================
 - Updated for official patch v2.2
