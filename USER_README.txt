@@ -1,4 +1,4 @@
-BBTAG Improvement Mod (v1.09) by KoviDomi -- README
+BBTAG Improvement Mod (v1.10) by GrimFlash -- README
 ==========================
 
 What this mod provides
@@ -72,6 +72,10 @@ Keep in mind that the mod may partially, or completely stop working whenever a n
 
 Changelog
 ==========================
+16-03-2022 -- version 1.10
+===============================
+- Updated publictest branch
+- Vsync is now set to off by default. You can turn it on in the settings.ini file
 
 11-12-2019 -- version 1.09
 ===============================
