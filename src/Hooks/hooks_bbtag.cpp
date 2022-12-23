@@ -586,9 +586,9 @@ void __declspec(naked)GetViewAndProjMatrixes()
 
 	__asm
 	{
-		mov DWORD PTR [ebp - 24h], 3F800000h
+		mov DWORD PTR [ebp - 6Ch], 3F800000h
 		push    eax
-		lea     eax, [ebp - 88h]
+		lea     eax, [ebp - 44h]
 		jmp[GetViewAndProjMatrixesJmpBackAddr]
 	}
 }
@@ -714,8 +714,8 @@ bool placeHooks_bbtag()
 
 	GetLookAtVectorJmpBackAddr = HookManager::SetHook("GetLookAtVector", "\x50\x8d\x46\x4c\x50", "xxxxx", 5, GetLookAtVector);
 
-	GetViewAndProjMatrixesJmpBackAddr = HookManager::SetHook("GetViewAndProjMatrixes", "\xc7\x45\xdc\x00\x00\x80\x3f\x50\x8d\x85\x78\xff\xff\xff",
-		"xxxxxxxxxxxxxx", 14, GetViewAndProjMatrixes);
+	GetViewAndProjMatrixesJmpBackAddr = HookManager::SetHook("GetViewAndProjMatrixes", "\xC7\x45\x94\x00\x00\x00\x00\x50\x8D\x45\x00\x50\xE8",
+		"xxx????xxx?xx", 11, GetViewAndProjMatrixes);
 
 	GetFrameCounterJmpBackAddr = HookManager::SetHook("GetFrameCounter", "\xff\x41\x08\xc2\x04\x00",
 		"xxxxxx", 6, GetFrameCounter);
