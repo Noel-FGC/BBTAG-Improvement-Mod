@@ -7,6 +7,8 @@
 
 typedef DWORD JMPBACKADDR;
 
+bool overwriteCharaIDArray(DWORD offset);
+
 struct functionhook_t
 {
 	std::string label;

@@ -4,6 +4,54 @@
 
 #include <Psapi.h>
 
+constexpr int CharaIDArray[256] = {
+	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 44, 12, 40, 45, 13, 14, 15, 56, 60, 58, 59, 54,
+	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+	16, 17, 18, 19, 20, 41, 21, 22, 23, 24, 47, 25, 46, 61, 62, 57, 
+	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+	-1, -1, -1, -1, -1, -1, -1, -1,
+	26, 27, 28, 29, 30, 31, 32, 33, 42, 34, 49, 35,
+	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+	-1, -1, -1, -1,	-1, -1, -1, -1,	-1, -1, -1, -1,
+	36, 37, 38, 39, 50, 
+	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+	-1, -1, -1, -1,	-1, -1, -1, -1, -1,	-1, -1, -1, -1, -1, -1,
+	43, 51, 48, 52,
+};
+
+bool overwriteCharaIDArray(DWORD offset)
+{
+	TCHAR szFileName[MAX_PATH + 1];
+	GetModuleFileName(NULL, szFileName, MAX_PATH + 1);
+
+	MODULEINFO modinfo = { 0 };
+	HMODULE hModule = GetModuleHandle(szFileName);
+	if (hModule == 0)
+		return 0;
+	GetModuleInformation(GetCurrentProcess(), hModule, &modinfo, sizeof(MODULEINFO));
+
+	DWORD old;
+
+	bool success = VirtualProtect((LPVOID)((char*)modinfo.lpBaseOfDll + offset), 1024, PAGE_READWRITE, &old);
+	
+	if (!success)
+	{
+		LOG(2, "Failed to hook chara ID array!\n");
+		return false;
+	}
+
+	memcpy((LPVOID)((char*)modinfo.lpBaseOfDll + offset), CharaIDArray, 1024);
+	VirtualProtect((LPVOID)((char*)modinfo.lpBaseOfDll + offset), 1024, old, &old);
+	
+	LOG(2, "Hooked chara ID array!\n");
+	
+	return true;
+}
+
 std::vector<functionhook_t> HookManager::hooks;
 
 JMPBACKADDR HookManager::SetHook(const char *label, const char *pattern, const char *mask,

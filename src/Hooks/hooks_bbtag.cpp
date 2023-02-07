@@ -113,7 +113,10 @@ void __declspec(naked)GetGameStateAndModeEntranceScreen()
 	WindowManager::GetInstance().Initialize(g_gameProc.hWndGameWindow, g_interfaces.pD3D9ExWrapper);
 
 	//ResetBackToMenu();
-
+	
+	overwriteCharaIDArray(0xD69C48);
+	overwriteCharaIDArray(0XD6ABA0);
+	
 	__asm
 	{
 		popad
@@ -719,7 +722,7 @@ bool placeHooks_bbtag()
 
 	GetFrameCounterJmpBackAddr = HookManager::SetHook("GetFrameCounter", "\xff\x41\x08\xc2\x04\x00",
 		"xxxxxx", 6, GetFrameCounter);
-
+	
 	///////////////// EXPERIMENTAL HOOKS BELOW ////////////////////////////
 
 	//was unable to find an unique pattern with the overwrite-able opcode as base, so we start searching two opcodes above then modify the address
