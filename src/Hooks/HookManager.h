@@ -7,6 +7,8 @@
 
 typedef DWORD JMPBACKADDR;
 
+bool overwriteCharaSlotArray();
+bool overwriteIdChecker();
 bool overwriteCharaIDArray(DWORD offset);
 
 struct functionhook_t

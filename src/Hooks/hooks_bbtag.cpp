@@ -114,9 +114,6 @@ void __declspec(naked)GetGameStateAndModeEntranceScreen()
 
 	//ResetBackToMenu();
 	
-	overwriteCharaIDArray(0xD69C48);
-	overwriteCharaIDArray(0XD6ABA0);
-	
 	__asm
 	{
 		popad
@@ -743,6 +740,11 @@ bool placeHooks_bbtag()
 	//	"xxxxxxxxx", 9, ShowAllLobbies_TWO);
 
 	//////////////////////////////////////////////////////////////////////
-
+	
+	overwriteCharaSlotArray();
+	overwriteCharaIDArray(0xD69C48);
+	overwriteCharaIDArray(0XD6ABA0);
+	overwriteIdChecker();
+	
 	return true;
 }
