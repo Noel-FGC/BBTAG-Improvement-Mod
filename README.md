@@ -61,6 +61,8 @@ Implements Steam API overriding
 * Labryz
 * Dormin
 * NeoStrayCat
+* TheDukeOfErl
+* WistfulHopes
 * Everybody in the BlazBlue PC community that has given support or feedback of any kind!
 
 ## Extra thanks to:
